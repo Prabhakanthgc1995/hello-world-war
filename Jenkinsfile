@@ -31,7 +31,7 @@ pipeline {
             }
             steps {
                 // Deploy the WAR file to the Tomcat webapps folder
-                sh 'scp /home/ubuntu/workspace/pipeline5/hello-world-war/target/hello-world-war-1.0.0.war ubuntu@172.31.46.95:/home/ubuntu/apache-tomcat-10.1.34/webapps/'
+                sh 'scp /home/ubuntu/workspace/pipeline5/hello-world-war/target/hello-world-war-1.0.0.war ubuntu@13.201.3.149:/home/ubuntu/apache-tomcat-10.1.34/webapps/'
             }
         }
     }
