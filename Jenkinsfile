@@ -21,11 +21,16 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Deploy the WAR file to the Tomcat webapps folder
-                sh 'cp /home/ubuntu/hello-world-war/target/hello-world-war-1.0.0.war /home/ubuntu/apache-tomcat-10.1.34/webapps/'
-                // Optionally, you can restart Tomcat if required
-                sh '/home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
-                sh '/home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
+                script {
+                    def tomcatWebapps = '/home/ubuntu/apache-tomcat-10.1.34/webapps'
+                    def warFile = '/home/ubuntu/hello-world-war/target/hello-world-war-1.0.0.war'
+
+                    // Check if the webapps directory exists, and create it if not
+                    sh "mkdir -p ${tomcatWebapps}"
+
+                    // Deploy the WAR file to the Tomcat webapps folder
+                    sh "cp ${warFile} ${tomcatWebapps}/"
+                }
             }
         }
     }
