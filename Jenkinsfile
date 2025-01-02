@@ -24,8 +24,8 @@ pipeline {
                 // Deploy the WAR file to the Tomcat webapps folder
                 sh 'cp /home/ubuntu/hello-world-war/target/hello-world-war-1.0.0.war /home/ubuntu/apache-tomcat-10.1.34/webapps/'
                 // Optionally, you can restart Tomcat if required
-                // sh '/home/ubuntu/apache-tomcat-10.1.34/bin/catalina.sh stop'
-                // sh '/home/ubuntu/apache-tomcat-10.1.34/bin/catalina.sh start'
+                sh '/home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
+                sh '/home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
             }
         }
     }
