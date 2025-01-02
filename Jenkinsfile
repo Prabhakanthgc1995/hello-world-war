@@ -31,12 +31,7 @@ pipeline {
             }
             steps {
                 // Deploy the WAR file to the Tomcat webapps folder
-                sh 'cp /home/ubuntu/opt/jenkins/workspace/pipeline1/hello-world-war/target/hello-world-war-1.0.0.war /home/ubuntu/opt/jenkins/apache-tomcat-10.1.34/webapps'
-
-                // Optionally, you can restart Tomcat if required
-                // Make sure the shutdown.sh and startup.sh are executable and available
-                sh '/home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
-                sh '/home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
+                sh 'cp /home/ubuntu/opt/jenkins/workspace/pipeline1/hello-world-war/target/hello-world-war-1.0.0.war /home/ubuntu/apache-tomcat-10.1.34/webapps'
             }
         }
     }
