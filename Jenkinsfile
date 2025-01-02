@@ -1,8 +1,11 @@
 pipeline {
-    agent { label 'production' }
+    agent none  // No global agent, we'll specify the agent in each stage
 
     stages {
         stage('Checkout') {
+            agent {
+                label 'production'  // Run on the production node
+            }
             steps {
                 // Clean up any previous files and clone the Git repository
                 sh 'rm -rf hello-world-war'
@@ -11,19 +14,27 @@ pipeline {
         }
 
         stage('Build') {
+            agent {
+                label 'production'  // Run on the production node
+            }
             steps {
                 // Run Maven build inside the cloned repository directory
                 dir('hello-world-war') {
-                    sh 'mvn clean package'
+                    sh 'mvn clean package'  // Ensure Maven is installed on the node
                 }
             }
         }
 
         stage('Deploy') {
+            agent {
+                label 'production'  // Run on the production node
+            }
             steps {
                 // Deploy the WAR file to the Tomcat webapps folder
                 sh 'cp /home/ubuntu/hello-world-war/target/hello-world-war-1.0.0.war /home/ubuntu/apache-tomcat-10.1.34/webapps/'
+
                 // Optionally, you can restart Tomcat if required
+                // Make sure the shutdown.sh and startup.sh are executable and available
                 sh '/home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
                 sh '/home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
             }
