@@ -30,30 +30,8 @@ pipeline {
 
                     // Copy the generated WAR file to the Tomcat webapps directory
                     sh "cp ${warFile} ${tomcatWebapps}/"
-
-                    // Ensure shutdown.sh and startup.sh are executable
-                    sh 'chmod +x /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
-                    sh 'chmod +x /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
-
-                    // Stop Tomcat using shutdown.sh
-                    sh '/bin/bash /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
-                    
-                    // Adding a small sleep to ensure Tomcat has stopped
-                    sleep(10)  // You can increase the sleep time if needed
-
-                    // Start Tomcat using startup.sh
-                    sh '/bin/bash /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
                 }
             }
-        }
-    }
-    
-    post {
-        success {
-            echo 'Deployment to Tomcat was successful.'
-        }
-        failure {
-            echo 'There was an issue with the pipeline.'
         }
     }
 }
