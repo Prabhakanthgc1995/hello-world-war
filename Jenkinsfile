@@ -26,9 +26,10 @@ pipeline {
                     def warFile = '/home/ubuntu/hello-world-war/target/hello-world-war-1.0.0.war'
                     sh "mkdir -p ${tomcatWebapps}"
                     sh "cp ${warFile} ${tomcatWebapps}/"
-                    sh 'sudo /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh || true'
-                    sh 'sudo /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh' 
-                }
+                    sh 'chmod +x /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
+                    sh 'chmod +x /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
+                    sh '/bin/bash /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh'
+                    sh '/bin/bash /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh'
             }
         }
     }
