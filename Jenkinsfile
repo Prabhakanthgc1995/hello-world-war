@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             agent {
-                label 'production'  // Run on the production node
+                label 'dev'  // Run on the production node
             }
             steps {
                 // Clean up any previous files and clone the Git repository
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') {
             agent {
-                label 'production'  // Run on the production node
+                label 'dev'  // Run on the production node
             }
             steps {
                 // Run Maven build inside the cloned repository directory
@@ -27,11 +27,11 @@ pipeline {
 
         stage('Deploy') {
             agent {
-                label 'production'  // Run on the production node
+                label 'dev'  // Run on the production node
             }
             steps {
                 // Deploy the WAR file to the Tomcat webapps folder
-                sh 'cp /home/ubuntu/opt/jenkins/workspace/pipeline1/hello-world-war/target/hello-world-war-1.0.0.war /home/ubuntu/apache-tomcat-10.1.34/webapps/'
+                sh 'cp /home/ubuntu/hello-world-war/target/hello-world-war-1.0.0.war /home/ubuntu/apache-tomcat-10.1.34/webapps/'
             }
         }
     }
