@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'dev' }
     environment {
        Sample_creds = credentials('Demo_test_crd')
     }
