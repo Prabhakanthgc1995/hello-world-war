@@ -13,7 +13,7 @@ pipeline {
                 sudo su
                 cd /root/opt/apache-tomcat-10.1.34/webapps
                 ls
-                curl -L -u "kanth_USR:kanth_PWD" -O "http://13.203.76.219:8082/artifactory/hello_world_war-libs-release/com/efsavage/hello-world-war/1.0.14/hello-world-war-1.0.14.war"
+                curl -L -u "kanth_USR:kanth_PWD" -O "http://3.111.245.100:8082//artifactory/hello_world_war-libs-release/com/efsavage/hello-world-war/1.0.16/hello-world-war-1.0.16.war"
                 pwd
                 cd /root/opt/apache-tomcat-10.1.34/bin
                 ./shutdown.sh
