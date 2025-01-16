@@ -40,14 +40,14 @@ jobs:
           echo "<settings>
                   <servers>
                     <server>
-                      <id>artifactory</id>
+                      <id>hello-world-war</id>
                       <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
                       <password>${{ secrets.ARTIFACTORY_API_KEY }}</password>
                     </server>
                   </servers>
                   <profiles>
                     <profile>
-                      <id>artifactory</id>
+                      <id>hello-world-war</id>
                       <repositories>
                         <repository>
                           <id>hello-world-war-libs-release</id>
