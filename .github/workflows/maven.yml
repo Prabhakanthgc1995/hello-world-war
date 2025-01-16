@@ -51,7 +51,7 @@ jobs:
                       <repositories>
                         <repository>
                           <id>hello-world-war-libs-release</id>
-                          <url>http://43.205.239.147:8082/artifactory/hello-world-war-libs-release//url>
+                          <url>http://43.205.239.147:8082/artifactory/hello-world-war-libs-release/</url>
                         </repository>
                       </repositories>
                     </profile>
@@ -65,4 +65,3 @@ jobs:
       # Deploy the artifact to JFrog Artifactory
       - name: Deploy to JFrog Artifactory
         run: mvn deploy -DaltDeploymentRepository=artifactory::default::https://your-artifactory-instance/artifactory/your-repo
-
