@@ -50,7 +50,7 @@ jobs:
                       <id>artifactory</id>
                       <repositories>
                         <repository>
-                          <id>hello-world-war</id>
+                          <id>hello-world-war-libs-release</id>
                           <url>http://43.205.239.147:8082/artifactory/hello-world-war-libs-release//url>
                         </repository>
                       </repositories>
